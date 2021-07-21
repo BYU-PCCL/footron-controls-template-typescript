@@ -1,0 +1,46 @@
+import { css } from "@emotion/react";
+import React, { useEffect } from "react";
+import { Button } from "@material-ui/core";
+import AnotherComponent from "./DataComponent";
+import {
+  ControlsClient,
+  ControlsClientProvider,
+} from "@footron/controls-client";
+
+const backgroundStyle = css`
+  background: #fafafa;
+  padding: 36px;
+  font-family: sans-serif;
+
+  & > h1 {
+    margin: 0 0 16px;
+  }
+`;
+
+const DemoComponent = () => {
+  const controlsClient = new ControlsClient(
+    "ws://localhost:8088/messaging/in/",
+    "dev"
+  );
+
+  useEffect(() => {
+    controlsClient.setApp("dev");
+  }, []);
+
+  return (
+    <div css={backgroundStyle}>
+      <h1>Controls TypeScript Template</h1>
+      <Button variant="contained" color="primary">
+        Material UI support built in!
+      </Button>
+      <br />
+      <br />
+      <ControlsClientProvider client={controlsClient}>
+        <AnotherComponent />
+      </ControlsClientProvider>
+    </div>
+  );
+};
+
+// noinspection JSUnusedGlobalSymbols
+export default DemoComponent;
