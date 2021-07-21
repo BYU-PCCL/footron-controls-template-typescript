@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
-import AnotherComponent from "./DataComponent";
+import DataComponent from "./DataComponent";
 import {
   ControlsClient,
   ControlsClientProvider,
@@ -17,7 +17,7 @@ const backgroundStyle = css`
   }
 `;
 
-const DemoComponent = () => {
+const ControlsComponent = () => {
   const controlsClient = new ControlsClient(
     "ws://localhost:8088/messaging/in/",
     "dev"
@@ -36,11 +36,11 @@ const DemoComponent = () => {
       <br />
       <br />
       <ControlsClientProvider client={controlsClient}>
-        <AnotherComponent />
+        <DataComponent />
       </ControlsClientProvider>
     </div>
   );
 };
 
 // noinspection JSUnusedGlobalSymbols
-export default DemoComponent;
+export default ControlsComponent;
