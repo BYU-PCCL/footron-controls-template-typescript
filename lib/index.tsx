@@ -18,13 +18,10 @@ const backgroundStyle = css`
 `;
 
 const ControlsComponent = () => {
-  const controlsClient = new ControlsClient(
-    "ws://localhost:8088/messaging/in/",
-    "dev"
-  );
+  const controlsClient = new ControlsClient("ws://localhost:8089/in", "");
 
   useEffect(() => {
-    controlsClient.setApp("dev");
+    controlsClient.setApp("dev-app");
   }, []);
 
   return (
