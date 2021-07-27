@@ -1,11 +1,7 @@
 import { css } from "@emotion/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
-import DataComponent from "./DataComponent";
-import {
-  ControlsClient,
-  ControlsClientProvider,
-} from "@footron/controls-client";
+import { useMessaging } from "@footron/controls-client";
 
 const backgroundStyle = css`
   background: #fafafa;
@@ -18,11 +14,25 @@ const backgroundStyle = css`
 `;
 
 const ControlsComponent = () => {
-  const controlsClient = new ControlsClient("ws://localhost:8089/in", "");
+  const [number, setNumber] = useState<number | undefined>();
+
+  const { sendMessage } = useMessaging<number>((message) => {
+    setNumber(message);
+  });
 
   useEffect(() => {
-    controlsClient.setApp("dev-app");
-  }, []);
+    if (!sendMessage) {
+      return;
+    }
+
+    const messageIntervalId = setInterval(async () => {
+      await sendMessage(Date.now());
+    }, 50);
+
+    return () => {
+      clearInterval(messageIntervalId);
+    };
+  }, [sendMessage]);
 
   return (
     <div css={backgroundStyle}>
@@ -32,9 +42,9 @@ const ControlsComponent = () => {
       </Button>
       <br />
       <br />
-      <ControlsClientProvider client={controlsClient}>
-        <DataComponent />
-      </ControlsClientProvider>
+      <div style={{ fontFamily: "monospace", fontSize: "20pt" }}>
+        {number || "Loading data..."}
+      </div>
     </div>
   );
 };
