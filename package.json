@@ -38,8 +38,8 @@
     "vite": "2.4.1"
   },
   "resolutions": {
-    "@footron/controls-cli": "portal:/home/vin/dev/footron/controls-cli/dist/",
-    "@footron/controls-client": "portal:/home/vin/dev/footron/controls-client"
+    "@footron/controls-cli": "portal:../controls-cli/dist/",
+    "@footron/controls-client": "portal:../controls-client"
   },
   "lint-staged": {
     "*.{html,htm,js,jsx,ts,tsx,css,md}": "yarn prettier --max-warnings=0 --write .",
