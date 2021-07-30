@@ -1,45 +1,45 @@
-import { css } from "@emotion/react";
-import React, { useEffect, useState } from "react";
-import { Button } from "@material-ui/core";
+/** @jsxImportSource @emotion/react */
+import { css, jsx } from "@emotion/react";
+import React, { useCallback, useState } from "react";
 import { useMessaging } from "@footron/controls-client";
+import { Slider } from "@material-ui/core";
 
-const backgroundStyle = css`
-  background: #fafafa;
-  padding: 36px;
-  font-family: sans-serif;
+const containerStyle = css`
+  padding: 16px;
+  overflow-x: hidden;
 
-  & > h1 {
+  p {
     margin: 0 0 16px;
   }
 `;
 
-const ControlsComponent = () => {
+const ControlsComponent = (): jsx.JSX.Element => {
   const [number, setNumber] = useState<number | undefined>();
 
   const { sendMessage } = useMessaging<number>((message) => {
     setNumber(message);
   });
 
-  useEffect(() => {
-    if (!sendMessage) {
-      return;
-    }
-
-    const messageIntervalId = setInterval(async () => {
-      await sendMessage(Date.now());
-    }, 50);
-
-    return () => {
-      clearInterval(messageIntervalId);
-    };
-  }, [sendMessage]);
+  const updateSlider = useCallback(
+    async (event, value) => {
+      await sendMessage(value);
+    },
+    [sendMessage]
+  );
 
   return (
-    <div css={backgroundStyle}>
-      <h1>Controls TypeScript Template</h1>
-      <Button variant="contained" color="primary">
-        Material UI support built in!
-      </Button>
+    <div css={containerStyle}>
+      <p>
+        <b>Move the slider!</b>
+      </p>
+      <Slider
+        min={0}
+        max={1}
+        onChange={updateSlider}
+        step={0.05}
+        marks
+        defaultValue={0}
+      />
       <br />
       <br />
       <div style={{ fontFamily: "monospace", fontSize: "20pt" }}>
@@ -49,5 +49,4 @@ const ControlsComponent = () => {
   );
 };
 
-// noinspection JSUnusedGlobalSymbols
 export default ControlsComponent;
