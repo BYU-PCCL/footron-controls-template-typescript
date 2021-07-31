@@ -18,6 +18,9 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
+  globals: {
+    JSX: true,
+  },
   rules: {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
