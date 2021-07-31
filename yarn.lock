@@ -416,11 +416,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@footron/controls-cli@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@footron/controls-cli@npm:0.1.0"
+"@footron/controls-cli@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@footron/controls-cli@npm:0.1.1"
   dependencies:
-    "@footron/controls-client": 0.1.12
+    "@footron/controls-client": ^0.1.14
     "@material-ui/core": ^4.12.1
     "@material-ui/icons": ^4.11.2
     connect: ^3.7.0
@@ -432,17 +432,8 @@ __metadata:
     vite-tsconfig-paths: ^3.3.13
     yargs: ^17.0.1
   bin:
-    ftcontrols: lib/cli.js
-  checksum: 0be55737fa823710bbd581162c04f4f5ea67d829015b69e22f8dabab1feea63d6406308982029f8ca8340306ebf5d5176c758da26d57705ccabb4c01d5b07398
-  languageName: node
-  linkType: hard
-
-"@footron/controls-client@npm:0.1.12":
-  version: 0.1.12
-  resolution: "@footron/controls-client@npm:0.1.12"
-  dependencies:
-    uuid: ^8.3.2
-  checksum: d1ca7bc385f22edab477ebab0427edc1e9901d6e0b1fb48c5b690f6534d85732df1c3bfccafaf8ff8af6731d353815d62d35ace8cb2b6c80abbae27f28efc839
+    ftcontrols: dist/lib/cli.js
+  checksum: 3f8370ad6e50dba2117eb27efc42465c8e9a40739d502f76e77796309a9b357f07dff5cc53738d1873211c207c8b97efd2242ba6e6cc5591fa0ba65431f2889c
   languageName: node
   linkType: hard
 
@@ -460,7 +451,7 @@ __metadata:
   resolution: "@footron/controls-typescript-template@workspace:."
   dependencies:
     "@emotion/react": ^11.4.0
-    "@footron/controls-cli": ^0.1.0
+    "@footron/controls-cli": ^0.1.1
     "@footron/controls-client": ^0.1.14
     "@material-ui/core": ^4.12.1
     "@material-ui/icons": ^4.11.2
