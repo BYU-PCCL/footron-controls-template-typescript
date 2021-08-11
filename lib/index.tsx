@@ -2,7 +2,8 @@
 import { css } from "@emotion/react";
 import React, { useCallback, useState } from "react";
 import { useMessaging } from "@footron/controls-client";
-import { Slider } from "@material-ui/core";
+
+let movementL: string = "stop";
 
 const containerStyle = css`
   padding: 16px;
@@ -20,31 +21,34 @@ const ControlsComponent = (): JSX.Element => {
     setNumber(message);
   });
 
-  const updateSlider = useCallback(
-    async (event, value) => {
-      await sendMessage(value);
-    },
-    [sendMessage]
+  const updateLeft = useCallback(
+      async () => {
+        await sendMessage(movementL);
+      },
+      [sendMessage]
   );
 
+  function lUp() {
+    movementL = "up";
+    updateLeft();
+  }
+
+  function lDown() {
+    movementL = "down";
+    updateLeft();
+  }
+
+  function lStop() {
+    movementL = "stop";
+    updateLeft();
+  }
+
+
+
   return (
-    <div css={containerStyle}>
-      <p>
-        <b>Move the slider!</b>
-      </p>
-      <Slider
-        min={0}
-        max={1}
-        onChange={updateSlider}
-        step={0.05}
-        marks
-        defaultValue={0}
-      />
-      <br />
-      <br />
-      <div style={{ fontFamily: "monospace", fontSize: "20pt" }}>
-        {number || "Loading data..."}
-      </div>
+    <div>
+      <button type="button" onMouseDown={lUp} onMouseUp={lStop}>Up</button>
+      <button type="button" onMouseDown={lDown} onMouseUp={lStop}>Down</button>
     </div>
   );
 };

@@ -335,14 +335,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.4.0":
-  version: 11.4.0
-  resolution: "@emotion/react@npm:11.4.0"
+"@emotion/react@npm:^11.4.1":
+  version: 11.4.1
+  resolution: "@emotion/react@npm:11.4.1"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@emotion/cache": ^11.4.0
     "@emotion/serialize": ^1.0.2
-    "@emotion/sheet": ^1.0.1
+    "@emotion/sheet": ^1.0.2
     "@emotion/utils": ^1.0.0
     "@emotion/weak-memoize": ^0.2.5
     hoist-non-react-statics: ^3.3.1
@@ -354,7 +354,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: af2abadbaeb762dd09be6f34036a769373fb8625116420c546592a33643e967942769ee23289d160977ae74922ff5dfac5bc5fdbe9c893fc3415fbb4d25c2318
+  checksum: de3c2150785567e68572ba42ab2fb28808c8522c7888eb54a22e19f3d981b59170d9e2e3db9445f25074d8d5e29c21da477450c7d5bbf9f2d168d759129aae8b
   languageName: node
   linkType: hard
 
@@ -371,10 +371,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/sheet@npm:^1.0.0, @emotion/sheet@npm:^1.0.1":
+"@emotion/sheet@npm:^1.0.0":
   version: 1.0.1
   resolution: "@emotion/sheet@npm:1.0.1"
   checksum: 624e2ede033e9b668fe9e20be92a9b712a0efb290f39ad72baa267688d41c37fd684f9b9349dbd62f722818a50c175d1b364b8d49896bd7e89f03083228a5eab
+  languageName: node
+  linkType: hard
+
+"@emotion/sheet@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@emotion/sheet@npm:1.0.2"
+  checksum: 836b413c6657cd6a3de93c53eebd80ea9a6656123f1b78f539b2eaba145fb8566e3aa005b301f807632964f29f7c3cd85322dafb5634abdc1760794e0c7f76dd
   languageName: node
   linkType: hard
 
@@ -450,7 +457,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@footron/controls-typescript-template@workspace:."
   dependencies:
-    "@emotion/react": ^11.4.0
+    "@emotion/react": ^11.4.1
     "@footron/controls-cli": ^0.1.1
     "@footron/controls-client": ^0.1.14
     "@material-ui/core": ^4.12.1
@@ -461,7 +468,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^4.28.2
     "@typescript-eslint/parser": ^4.28.2
     "@vitejs/plugin-react-refresh": ^1.3.5
-    eslint: ^7.31.0
+    eslint: ^7.32.0
     eslint-config-prettier: ^8.3.0
     eslint-config-standard: ^16.0.3
     eslint-import-resolver-node: ^0.3.4
@@ -1802,9 +1809,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.31.0":
-  version: 7.31.0
-  resolution: "eslint@npm:7.31.0"
+"eslint@npm:^7.32.0":
+  version: 7.32.0
+  resolution: "eslint@npm:7.32.0"
   dependencies:
     "@babel/code-frame": 7.12.11
     "@eslint/eslintrc": ^0.4.3
@@ -1848,7 +1855,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: fd73d07ce0b73e5ea950b295a6eaf8d45914b4e56cba4ef49e55a36dc7e965a4865f63f618c0a096a01d089752d9e44180b80ba8657039b8e631dd40e0af1663
+  checksum: cc85af9985a3a11085c011f3d27abe8111006d34cc274291b3c4d7bea51a4e2ff6135780249becd919ba7f6d6d1ecc38a6b73dacb6a7be08d38453b344dc8d37
   languageName: node
   linkType: hard
 
