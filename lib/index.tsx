@@ -81,9 +81,9 @@ const ControlsComponent = (): JSX.Element => {
     });
 
     const update = useCallback(
-        async (movementL) => {
+        async (movement) => {
             if (!playerName) return;
-            await sendMessage({player: playerName, movement: movementL});
+            await sendMessage({player: playerName, movement: movement});
         },
         [sendMessage, playerName]
     );
@@ -129,7 +129,7 @@ const ControlsComponent = (): JSX.Element => {
         return (
         <div css={buttonStyle}>
             <div id={"name"}>{playerName || "unknown"}</div>
-            <Button type="button" id={"start"} onMouseDown={start} onMouseUp={stop}>Start</Button>
+            <Button type="button" id={"start"} onMouseUp={start}>Start</Button>
             <div>
                 <Button type="button" id={"left"} size={"large"} onMouseDown={lUp} onMouseUp={stop}>Up</Button>
                 <Button type="button" id={"right"} size={"large"} onMouseDown={lDown} onMouseUp={stop}>Down</Button>
