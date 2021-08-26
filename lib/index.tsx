@@ -17,6 +17,7 @@ import { makeStyles } from "@material-ui/core";
 const useButtonStyles = makeStyles({
   contained: {
     height: "400px",
+
   },
 });
 
@@ -24,6 +25,10 @@ const buttonStyle = css`
   #name {
     text-align: center;
     font-size: 40px;
+  }
+  
+  body {
+    background-color: #525252;
   }
 
   #start {
@@ -45,18 +50,7 @@ const buttonStyle = css`
     // background-color: var(--color);
     background-color: #6166ff;
   }
-
-  div {
-    height: 800%;
-  }
-
-  .css-ft6nkz-ControlsComponent {
-    height: 800%;
-  }
-
-  main {
-    height: 800%;
-  }
+  
 `;
 
 const blue = css`
@@ -96,8 +90,26 @@ const yellow = css`
   }
 `;
 
+function getButton1Name(name:string){
+  return (name === "left" ? "Up" :
+      name === "right" ? "Up" :
+          name === "up" ? "Left" :
+              name === "down" ? "Left" :
+                  "Button1")
+}
+
+function getButton2Name(name:string){
+  return (name === "left" ? "Down" :
+      name === "right" ? "Down" :
+          name === "up" ? "Right" :
+              name === "down" ? "Right" :
+                  "Button2")
+}
+
 const ControlsComponent = (): JSX.Element => {
   const [playerName, setPlayerName] = useState<string | undefined>();
+  const [button1, setButton1] = useState<string | undefined>();
+  // const [button2, setButton2] = useState<string | undefined>();
 
   const { sendMessage } = useMessaging<{ player: string }>((message) => {
     setPlayerName(message.player);
@@ -133,65 +145,66 @@ const ControlsComponent = (): JSX.Element => {
     return 1 + 1;
   }
 
-  // let PlayerName = ({
-  //     // eslint-disable-next-line react/display-name
-  //     render: function() {
-  //         return <div> {player}! </div>;
-  //     }
-  // })
-
   let color = css`
     html {
     }
   `;
 
-  if (playerName === "left") {
-    color = blue;
-  } else if (playerName === "right") {
-    color = green;
-  } else if (playerName === "up") {
-    color = red;
-  } else if (playerName === "down") {
-    color = yellow;
-  }
+  // if (playerName === "left" || playerName === "right") {
+  //   setButton1("Down");
+  //   // setButton2("Up");
+  // } else if (playerName === "up" || playerName === "down") {
+  //   setButton1("Left");
+  //   // setButton2("Right");
+  // }
+
   return (
     <div css={buttonStyle}>
       <div id={"name"}>{playerName || "unknown"}</div>
-      <Button type="button" id={"start"} onMouseUp={start}>
+      <Button type="button" id={"start"} onTouchEnd={start}>
         Start
       </Button>
 
       <div>
-
         <Button
           type="button"
           variant={"contained"}
           id={"right"}
           size={"large"}
+          onTouchStart={up}
+          onTouchEnd={stop}
+          classes={{
+            contained: buttonClasses.contained,
+          }}
+        >
+          {getButton1Name(playerName)}
+        </Button>
+        <Button
+          type="button"
+          variant={"contained"}
+          id={"left"}
           onTouchStart={down}
           onTouchEnd={stop}
           classes={{
             contained: buttonClasses.contained,
           }}
         >
-          Down
-        </Button>
-        <Button
-            type="button"
-            variant={"contained"}
-            id={"left"}
-            onTouchStart={up}
-            onTouchEnd={stop}
-            classes={{
-              contained: buttonClasses.contained,
-            }}
-        >
-          Up
+          {getButton2Name(playerName)}
         </Button>
       </div>
-
     </div>
   );
 };
 
 export default ControlsComponent;
+
+
+// if (playerName === "left") {
+//   color = blue;
+// } else if (playerName === "right") {
+//   color = green;
+// } else if (playerName === "up") {
+//   color = red;
+// } else if (playerName === "down") {
+//   color = yellow;
+// }
