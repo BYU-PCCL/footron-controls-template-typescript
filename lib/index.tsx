@@ -3,14 +3,6 @@ import { css } from "@emotion/react";
 import React, { useCallback, useState } from "react";
 import { useMessaging } from "@footron/controls-client";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core";
-
-const useButtonStyles = makeStyles({
-  contained: {
-    height: "400px",
-
-  },
-});
 
 const blue = '#6166ff';
 const green = '#3de364';
@@ -22,18 +14,15 @@ const buttonStyle = css`
     text-align: center;
     font-size: 40px;
   }
-
-  // todo
   #start {
     margin: auto;
   }
-
   Button {
     width: 50%;
     border: 1px solid black;
     font-weight: bolder;
+    font-size: 150%;
   }
-  
 `;
 
 function getButton1Name(name:(string | undefined)){
@@ -43,7 +32,6 @@ function getButton1Name(name:(string | undefined)){
               name === "down" ? "Left" :
                   "Button1")
 }
-
 function getButton2Name(name:(string | undefined)){
   return (name === "left" ? "Down" :
       name === "right" ? "Down" :
@@ -51,7 +39,6 @@ function getButton2Name(name:(string | undefined)){
               name === "down" ? "Right" :
                   "Button2")
 }
-
 function getButtonColor(name:(string | undefined)){
   return (name === "left" ? blue :
       name === "right" ? green :
@@ -59,10 +46,10 @@ function getButtonColor(name:(string | undefined)){
               name === "down" ? yellow :
                   "black")
 }
-
 function getButtonTextColor(name:(string | undefined)){
   return (name === "down" ? "black" : "whitesmoke")
 }
+
 
 const ControlsComponent = (): JSX.Element => {
   const [playerName, setPlayerName] = useState<string | undefined>();
@@ -78,7 +65,6 @@ const ControlsComponent = (): JSX.Element => {
     },
     [sendMessage, playerName]
   );
-  const buttonClasses = useButtonStyles();
 
   function up() {
     update(0);
@@ -104,6 +90,7 @@ const ControlsComponent = (): JSX.Element => {
       >{playerName || "unknown"}</div>
       <Button
           type="button"
+          disableRipple
           id={"start"}
           style={{
             display: 'flex',
@@ -119,7 +106,7 @@ const ControlsComponent = (): JSX.Element => {
       <div>
         <Button
           type="button"
-          variant={"contained"}
+          disableRipple
           id={"right"}
           size={"large"}
           onTouchStart={up}
@@ -128,17 +115,15 @@ const ControlsComponent = (): JSX.Element => {
             backgroundColor: getButtonColor(playerName),
             color: getButtonTextColor(playerName),
             height: "400px",
+            fontSize: "300%",
 
-          }}
-          classes={{
-            contained: buttonClasses.contained,
           }}
         >
           {getButton1Name(playerName)}
         </Button>
         <Button
           type="button"
-          variant={"contained"}
+          disableRipple
           id={"left"}
           onTouchStart={down}
           onTouchEnd={stop}
@@ -146,9 +131,7 @@ const ControlsComponent = (): JSX.Element => {
             backgroundColor: getButtonColor(playerName),
             color: getButtonTextColor(playerName),
             height: "400px",
-          }}
-          classes={{
-            contained: buttonClasses.contained,
+            fontSize: "300%",
           }}
         >
           {getButton2Name(playerName)}
