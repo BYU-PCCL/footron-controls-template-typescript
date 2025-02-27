@@ -10,7 +10,7 @@ yarn install
 yarn dev
 ```
 
-To test functionality loacally connect this to an instance of the footron router by first insstalling it if it hasn't been already.
+To test functionality locally connect this to an instance of the footron router by first installing it if it hasn't been already.
 
 `pip install git+https://github.com/BYU-PCCL/footron-router.git`
 
